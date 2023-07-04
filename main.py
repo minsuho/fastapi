@@ -104,7 +104,7 @@ async def kleague(y: str = "2023"):
 @app.get("/kleague2")
 async def kleague2(y: str = "2023"):
     # y = "2023"
-    req = requests.get(f'https://sports.news.naver.com/kfootball/record/index?category=kleague&year={y}').text
+    req = requests.get(f'https://sports.news.naver.com/kfootball/record/index?category=kleague2&year={y}').text
     html = BeautifulSoup(req, 'html.parser')
     t1 = html.select_one('#regularGroup_table')
     t = t1.select('tr')
