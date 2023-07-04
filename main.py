@@ -28,7 +28,7 @@ async def videoInfo(id: str = None):
 @app.get("/kleague")
 async def kleague(y: str = "2023"):
     # y = "2023"
-    if y >= 2023:
+    if int(y) >= 2023:
         req = requests.get(f'https://sports.news.naver.com/kfootball/record/index?category=kleague&year={y}').text
         html = BeautifulSoup(req, 'html.parser')
         t1 = html.select_one('#regularGroup_table')
@@ -60,7 +60,7 @@ async def kleague(y: str = "2023"):
             # print(i.select_one('td:nth-child(10)').text)
             # print(i.select_one('td:nth-child(11)').text)
             # print(i.select_one('td:nth-child(12)').text)
-    elif y < 2023:
+    elif int(y) < 2023:
         req = requests.get(f'https://sports.news.naver.com/kfootball/record/index?category=kleague&year={y}').text
         html = BeautifulSoup(req, 'html.parser')
         t1 = html.select_one('#splitGroupA_table')
