@@ -24,8 +24,9 @@ async def videofullInfo(id: str = None):
 async def videoInfo(id: str = None):
     video = Video.getInfo(id, mode = ResultMode.json)
     return video
+    
 @app.get("/kleague")
-async def kleague(y: str = None):
+async def kleague(y: str = "2023"):
     # y = "2023"
     if y >= 2023:
         req = requests.get(f'https://sports.news.naver.com/kfootball/record/index?category=kleague&year={y}').text
@@ -101,7 +102,7 @@ async def kleague(y: str = None):
 
 
 @app.get("/kleague2")
-async def kleague2(y: str = None):
+async def kleague2(y: str = "2023"):
     # y = "2023"
     req = requests.get(f'https://sports.news.naver.com/kfootball/record/index?category=kleague&year={y}').text
     html = BeautifulSoup(req, 'html.parser')
